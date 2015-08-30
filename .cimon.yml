@@ -10,8 +10,8 @@ staging:
     - echo "prepare victim"
   service: ruby
   folder: /app
-  port: 80
-  cmd: 'ruby -run -e httpd . -p 80'
+  port: 3000
+  cmd: 'ruby -run -e httpd . -p 3000'
   env:
     - RACK_ENV=production
 

@@ -18,7 +18,7 @@ staging:
 
 tests:
   prepare:
-    - npm install
+    - echo "prepare victim"
   service: ruby
   folder: /app
   cmd: 'for i in {1..100}; do printf "."; sleep 0.1; done; printf "\n";'

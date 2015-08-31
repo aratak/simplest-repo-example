@@ -15,11 +15,11 @@ staging:
   env:
     - RACK_ENV=production
 
-tests:
-  prepare:
-    - echo "prepare victim"
-  service: ruby
-  folder: /app
-  cmd: 'echo "..............................."'
-  env:
-    - RACK_ENV=production
+# tests:
+#   prepare:
+#     - echo "prepare victim"
+#   service: ruby
+#   folder: /app
+#   cmd: 'echo "..............................."'
+#   env:
+#     - RACK_ENV=production

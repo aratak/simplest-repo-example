@@ -5,21 +5,17 @@ services:
       - echo "prepare service 2"
     from: 'ruby:2.2.3'
 
-staging:
+defaults: &server
   prepare:
     - echo "prepare victim"
   service: ruby
   folder: /app
-  port: 3001
-  cmd: 'ruby -run -e httpd . -p 3001'
   env:
     - RACK_ENV=production
 
-# tests:
-#   prepare:
-#     - echo "prepare victim"
-#   service: ruby
-#   folder: /app
-#   cmd: 'echo "..............................."'
-#   env:
-#     - RACK_ENV=production
+staging:
+  port: 3001
+  cmd: 'ruby -run -e httpd . -p 3001'
+
+tests:
+  cmd: 'echo "..............................."'

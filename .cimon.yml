@@ -14,8 +14,10 @@ defaults: &server
     - RACK_ENV=production
 
 staging:
+  <<: *server
   port: 3001
   cmd: 'ruby -run -e httpd . -p 3001'
 
 tests:
+  <<: *server
   cmd: 'echo "..............................."'

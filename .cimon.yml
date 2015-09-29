@@ -9,6 +9,7 @@ defaults: &server
   prepare:
     - git --version
     - ls -alh websocket-demo
+    - env
     - echo "prepare victim"
   service: ruby
   folder: /app

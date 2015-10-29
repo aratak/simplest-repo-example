@@ -8,7 +8,7 @@ defaults: &defaults
   prepare:
     - ls -alh websocket-demo
     - env
-    - foreman --version
+    - gem list
   service: ruby
   folder: /app
   env:

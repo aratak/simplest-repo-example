@@ -20,7 +20,7 @@ defaults: &server
 staging:
   <<: *server
   ports: [3001, 3002]
-  cmd: foreman start
+  cmd: ruby -run -e httpd . -p 3001
 
 tests:
   <<: *server

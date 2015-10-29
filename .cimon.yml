@@ -3,25 +3,24 @@ services:
     from: 'ruby:2.2.3'
     prepare:
       - gem install foreman
-      - echo "prepare service 1"
-      - echo "prepare service 2"
 
-defaults: &server
+defaults: &defaults
   prepare:
-    - git --version
     - ls -alh websocket-demo
     - env
-    - echo "prepare victim"
+    - foreman --version
   service: ruby
   folder: /app
   env:
     - RACK_ENV=production
 
 staging:
-  <<: *server
-  ports: [3001, 3002]
+  <<: *defaults
+  ports:
+   - 3001
+   - 3002
   cmd: foreman start
 
 tests:
-  <<: *server
+  <<: *defaults
   cmd: 'echo "..............................."'

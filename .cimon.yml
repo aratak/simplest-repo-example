@@ -3,9 +3,8 @@ services:
     build:
       - echo "prepare service 1"
       - echo "prepare service 2"
-    from: 'ruby:2.2.3'
-    prepare:
       - gem install foreman
+    from: 'ruby:2.2.3'
 
 defaults: &defaults
   prepare:

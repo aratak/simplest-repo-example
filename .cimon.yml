@@ -1,5 +1,8 @@
 services:
   ruby:
+    build:
+      - echo "prepare service 1"
+      - echo "prepare service 2"
     from: 'ruby:2.2.3'
     prepare:
       - gem install foreman
@@ -11,8 +14,6 @@ defaults: &defaults
     - gem list
   service: ruby
   folder: /app
-  env:
-    - RACK_ENV=production
 
 staging:
   <<: *defaults
@@ -20,7 +21,11 @@ staging:
    - 3001
    - 3002
   cmd: foreman start
+  env:
+    - RACK_ENV=production
 
 tests:
   <<: *defaults
-  cmd: 'echo "..............................."'
+  cmd: 'for i in {1..100}; do printf "."; sleep 0.1; done; printf "\n";'
+  env:
+    - RACK_ENV=test

@@ -1,16 +1,12 @@
 services:
   ruby:
-    build:
-      - echo "prepare service 1"
-      - echo "prepare service 2"
-      - gem install foreman
     from: 'ruby:2.2.3'
+    build:
+      - 'gem install foreman'
+      - 'curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -'
+      - 'sudo apt-get install -y nodejs'
 
 defaults: &defaults
-  prepare:
-    - ls -alh websocket-demo
-    - env
-    - gem list
   service: ruby
   folder: /app
 
@@ -21,10 +17,12 @@ staging:
    - 3002
   cmd: foreman start
   env:
+    - NODE_ENV=production
     - RACK_ENV=production
 
 tests:
   <<: *defaults
-  cmd: 'for i in {1..100}; do printf "."; sleep 0.1; done; printf "\n";'
+  cmd: 'echo \'..........\''
   env:
     - RACK_ENV=test
+    - NODE_ENV=test

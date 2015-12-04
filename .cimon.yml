@@ -10,15 +10,15 @@ defaults: &defaults
   service: ruby
   folder: /app
 
-# staging:
-#   <<: *defaults
-#   ports:
-#    - 3001
-#    - 3002
-#   cmd: foreman start
-#   env:
-#     - NODE_ENV=production
-#     - RACK_ENV=production
+staging:
+  <<: *defaults
+  ports:
+   - 3001
+   - 3002
+  cmd: foreman start
+  env:
+    - NODE_ENV=production
+    - RACK_ENV=production
 
 tests:
   <<: *defaults

@@ -3,7 +3,7 @@ services:
     from: 'ruby:2.2.3'
     build:
       - 'gem install foreman'
-      - 'curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -'
+      - 'curl -sL https://deb.nodesource.com/setup_4.x | bash -s'
       - 'sudo apt-get install -y nodejs'
 
 defaults: &defaults

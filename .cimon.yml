@@ -3,7 +3,8 @@ services:
     from: 'ruby:2.2.3'
     build:
       - 'gem install foreman'
-      - 'sudo apt-get install -y nodejs'
+      - 'apt-get update'
+      - 'apt-get install -y nodejs'
       - 'node -v'
 
 defaults: &defaults

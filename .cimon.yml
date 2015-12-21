@@ -12,6 +12,7 @@ defaults: &defaults
   folder: /app
   prepare:
     - 'node -v'
+    - "echo 'this is prepare section'"
 
 staging:
   <<: *defaults

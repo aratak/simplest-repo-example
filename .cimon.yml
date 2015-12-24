@@ -13,6 +13,7 @@ defaults: &defaults
   prepare:
     - 'node -v'
     - "echo 'this is prepare section'"
+    - "echo '.'"
 
 staging:
   <<: *defaults

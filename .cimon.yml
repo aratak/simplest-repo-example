@@ -24,3 +24,10 @@ staging:
   env:
     - NODE_ENV=production
     - RACK_ENV=production
+
+tests:
+  <<: *defaults
+  cmd: "echo '.'"
+  env:
+    - NODE_ENV=production
+    - RACK_ENV=production

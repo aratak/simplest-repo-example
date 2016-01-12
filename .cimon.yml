@@ -27,7 +27,7 @@ staging:
 
 tests:
   <<: *defaults
-  cmd: "echo '...........................'"
+  cmd: "echo '............................'"
   env:
     - NODE_ENV=production
     - RACK_ENV=production

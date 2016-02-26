@@ -20,7 +20,7 @@ staging:
   ports:
    - 3001
    - 3002
-  cmd: foreman start
+  cmd: 'for i in {1..100}; do printf "."; sleep 0.1; done; printf "\n";'
   env:
     - NODE_ENV=production
     - RACK_ENV=production

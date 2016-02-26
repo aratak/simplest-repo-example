@@ -1,0 +1,3 @@
+[submodule "websocket-demo"]
+	path = websocket-demo
+	url = ../../cimon-io/websocket-demo

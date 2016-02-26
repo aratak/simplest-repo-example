@@ -15,16 +15,6 @@ defaults: &defaults
     - "echo 'this is prepare section'"
     - "echo '.'"
 
-staging:
-  <<: *defaults
-  cmd: 'foreman start'
-  ports:
-   - 3001
-   - 3002
-  env:
-    - NODE_ENV=production
-    - RACK_ENV=production
-
 tests:
   <<: *defaults
   cmd: 'for i in {1..100}; do printf "."; sleep 0.1; done; printf "\n";'

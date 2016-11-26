@@ -1,26 +1,33 @@
 services:
   ruby:
-    prepare:
-      - echo "prepare service 1"
-      - echo "prepare service 2"
     from: 'ruby:2.2.3'
+    build:
+      - 'gem install foreman'
+      - '/bin/sh -lc "curl -sL https://deb.nodesource.com/setup_4.x | bash -"'
+      - 'apt-get update'
+      - 'apt-get install -y build-essential nodejs'
+
+defaults: &defaults
+  service: ruby
+  folder: /app
+  prepare:
+    - 'node -v'
+    - "echo 'this is prepare section'"
+    - "echo '.'"
 
 staging:
-  prepare:
-    - echo "prepare victim"
-  service: ruby
-  folder: /app
-  port: 80
-  cmd: 'ruby -run -e httpd . -p $PORT'
+  <<: *defaults
+  ports:
+   - 3001
+   - 3002
+  cmd: foreman start
   env:
+    - NODE_ENV=production
     - RACK_ENV=production
-    - PORT=80
 
 tests:
-  prepare:
-    - echo "prepare victim"
-  service: ruby
-  folder: /app
-  cmd: 'for i in {1..100}; do printf "."; sleep 0.1; done; printf "\n";'
+  <<: *defaults
+  cmd: "echo '............................'"
   env:
+    - NODE_ENV=production
     - RACK_ENV=production
